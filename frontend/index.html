@@ -56,9 +56,37 @@
                 <button type="submit">Add to fleet</button>
             </form>
         </aside>
+
+        <aside class="panel panel-actions">
+            <div class="panel-header">
+                <h2>Upload firmware</h2>
+            </div>
+            <form id="firmware-form">
+                <label for="firmware-version">Version</label>
+                <input type="text" id="firmware-version" placeholder="e.g. 2.1.0" required>
+
+                <button type="submit">Upload build</button>
+            </form>
+            <ul id="firmware-list" class="build-list"></ul>
+        </aside>
+
+        <aside class="panel panel-actions">
+            <div class="panel-header">
+                <h2>Start update</h2>
+            </div>
+            <form id="job-form">
+                <label for="job-device">Device</label>
+                <select id="job-device" required></select>
+
+                <label for="job-build">Firmware build</label>
+                <select id="job-build" required></select>
+
+                <button type="submit">Start update</button>
+            </form>
+            <div id="job-status"></div>
+        </aside>
     </main>
 
     <script src="app.js"></script>
-
 </body>
 </html>

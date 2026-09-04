@@ -23,3 +23,21 @@ def upload_firmware(build: FirmwareBuildCreate):
         version=build.version,
         upload_status="uploaded"
     )
+
+@router.get("/firmware", response_model=list[FirmwareBuildResponse])
+def list_firmware():
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM firmware_builds")
+    rows = cursor.fetchall()
+    conn.close()
+
+    return [
+        FirmwareBuildResponse(
+            id=row["id"],
+            version=row["version"],
+            upload_status=row["upload_status"]
+        )
+        for row in rows
+    ]
