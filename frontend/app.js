@@ -6,7 +6,7 @@ async function loadDevices() {
     const response = await fetch(`${API_BASE}/devices`);
     const devices = await response.json();
 
-    const tbody = document.getElementById("device-table-body");
+    const tbody = document.getElementById("fleet-count").textContent = `${devices.length} device${devices.length === 1 ? "" : "s"}`;
     tbody.innerHTML = ""; // clear existing rows before re-rendering
 
     devices.forEach((device) => {
