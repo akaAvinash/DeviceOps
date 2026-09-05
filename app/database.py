@@ -1,7 +1,9 @@
+import os
 import sqlite3
 from pathlib import Path
 
-DB_PATH = Path(__file__).parent.parent / "data" / "deviceops.db"
+DEFAULT_DB_PATH = Path(__file__).parent.parent / "data" / "deviceops.db"
+DB_PATH = Path(os.environ.get("DEVICEOPS_DB_PATH", str(DEFAULT_DB_PATH)))
 
 def get_connection():
     conn = sqlite3.connect(DB_PATH)
